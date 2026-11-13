@@ -1,15 +1,28 @@
+
 {
   "services": {
-    "my_frontend": {
-      "root": "frontend/"
+    "frontend": {
+      "root": "Frontend/",
+      "framework": "vite"
     },
-    "my_backend": {
-      "root": "backend/",
-      "entrypoint": "main:app"
+    "backend": {
+      "root": "Backend/",
+      "entrypoint": "server.js",
+      "framework": "express"
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": { "service": "my_backend" } },
-    { "source": "/(.*)", "destination": { "service": "my_frontend" } }
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
   ]
 }
